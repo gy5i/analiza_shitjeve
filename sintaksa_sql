@@ -1,0 +1,107 @@
+--- Numri i Klienteve ---
+SELECT COUNT(id_klientit) AS numri_i_klienteve FROM klientet;
+
+--- Numri i Porosive ---
+SELECT COUNT(id_porosise) AS numri_i_porosive FROM porosite;
+
+--- Te Ardhurat ---
+SELECT SUM(cmimi_dollar) AS te_ardhurat_totale FROM porosite;
+
+------------------------------------------------------------------------------------------
+
+--- Analiza kohore e shitjeve ---
+
+--- Shitjet sipas vitit dhe muajit ---
+SELECT 
+    YEAR(data_porosise) AS viti, 
+    MONTH(data_porosise) AS muaji, 
+    SUM(cmimi_dollar) AS totali_shitjeve,
+    COUNT(id_porosise) AS numri_porosive
+FROM porosite
+GROUP BY YEAR(data_porosise), MONTH(data_porosise)
+ORDER BY viti, muaji;
+
+--- Shitjet sipas ores se porosise ---
+SELECT
+    DATEPART(HOUR, ora_porosise) AS ora_porosise,
+    COUNT(id_porosise) AS numri_i_porosive,
+    SUM(cmimi_dollar) AS totali_i_blerjeve
+FROM porosite
+GROUP BY DATEPART(HOUR, ora_porosise)
+ORDER BY totali_i_blerjeve DESC;
+
+--- Shitjet sipas diteve te javes ---
+SELECT 
+    DATENAME(WEEKDAY, data_porosise) AS dita_e_javes,
+    COUNT(id_porosise) AS numri_i_porosive,
+    SUM(cmimi_dollar) AS totali_i_blerjeve
+FROM porosite
+GROUP BY DATENAME(WEEKDAY, data_porosise)
+ORDER BY totali_i_blerjeve DESC;
+
+------------------------------------------------------------------------------------------
+
+--- Shitjet sipas produkteve ---
+
+--- Porosite sipas kategorive ---
+SELECT 
+    p.kategoria,
+    COUNT(po.id_porosise) AS numri_i_porosive,
+    SUM(po.cmimi_dollar) AS totali_i_blerjeve
+FROM porosite po
+JOIN produktet p ON po.id_produktit = p.id_produktit
+GROUP BY p.kategoria
+ORDER BY totali_i_blerjeve DESC;
+
+--- Produktet me shitjet me te larta ---
+SELECT TOP 10
+    p.emri_produktit,
+    p.kategoria,
+    COUNT(po.id_porosise) AS numri_i_porosive
+FROM porosite po
+JOIN produktet p ON po.id_produktit = p.id_produktit
+GROUP BY p.emri_produktit, p.kategoria
+ORDER BY numri_i_porosive DESC;
+
+--- Produktet me te ardhurat me te ulta ---
+SELECT TOP 10
+    p.emri_produktit,
+    p.kategoria,
+    SUM(po.cmimi_dollar) AS totali_i_blerjeve
+FROM porosite po
+JOIN produktet p ON po.id_produktit = p.id_produktit
+GROUP BY p.emri_produktit, p.kategoria
+ORDER BY totali_i_blerjeve ASC;
+
+-------------------------------------------------------------------------------------
+
+--- Analiza e klienteve ---
+
+--- Shitjet dhe te Ardhurat me te larta sipas Shteteve ---
+SELECT 
+    k.shteti,
+    k.kontinenti,
+    COUNT(po.id_porosise) AS numri_i_porosive,
+    SUM(po.cmimi_dollar) AS totali_i_blerjeve
+FROM porosite po
+JOIN klientet k ON po.id_klientit = k.id_klientit
+GROUP BY k.shteti, k.kontinenti
+ORDER BY numri_i_porosive DESC;
+
+--- Numri i klienteve sipas vitit te krijimit te llogarise ---
+SELECT 
+    YEAR(k.data_krijimit) AS viti, 
+    COUNT(DISTINCT po.id_klientit) AS numri_klienteve
+FROM klientet k
+JOIN porosite po ON k.id_klientit = po.id_klientit
+GROUP BY YEAR(k.data_krijimit)
+ORDER BY viti;
+
+--- Numri i klienteve sipas kanalit te marketingut ---
+SELECT 
+    k.kanali_marketingut, 
+    COUNT(DISTINCT po.id_klientit) AS numri_klienteve
+FROM klientet k
+JOIN porosite po ON k.id_klientit = po.id_klientit
+GROUP BY k.kanali_marketingut
+ORDER BY numri_klienteve DESC;
