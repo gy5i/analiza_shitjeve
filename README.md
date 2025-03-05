@@ -14,21 +14,9 @@ GearQuest kishte nevojë për të përmirësuar performancën e shitjeve duke an
 
 ---
 
-## **Data Structure Overview**
-
 ### **Datasetet e Përdorura**
 
 Të dhënat u morën nga një dataset i siguruar nga Kaggle, i cili përmbante informacione mbi klientët, porositë dhe produktet.
-
-### **Struktura e Tabelave**
-
-![Screenshot 2025-03-04 172206.png](attachment:26f9f93f-bf4e-4c56-a8e0-1ba94f199f62:Screenshot_2025-03-04_172206.png)
-
----
-
-[Shiko këtu kodin SQL](https://www.notion.so/Shiko-k-tu-kodin-SQL-1ac8711563b28033b771dbafd7b869fc?pvs=21)
-
-## **Executive Summary**
 
 ### **Pikat Kryesore të Analizës**
 
@@ -41,8 +29,6 @@ Të dhënat u morën nga një dataset i siguruar nga Kaggle, i cili përmbante i
 
 ---
 
-## **Insights Deep Dive**
-
 ### **Analiza e Sezonalitetit**
 
 - Pika kulmore e shitjeve janë muajt **korrik, gusht dhe tetor**, duke sugjeruar se GearQuest duhet të fokusojë fushata intensive në këto periudha.
@@ -52,14 +38,6 @@ Të dhënat u morën nga një dataset i siguruar nga Kaggle, i cili përmbante i
 
 - **Gaming laptops dhe custom PCs** dominojnë si produktet me performancën më të lartë në terma të shitjeve dhe të ardhurave.
 
-![Screenshot 2025-03-04 130016.png](attachment:c6d67399-a7b9-440e-955b-da7fdeadfae2:Screenshot_2025-03-04_130016.png)
-
-![Screenshot 2025-03-04 130025.png](attachment:82dab28f-9d7a-45f9-ba03-4b8bc07f46d0:6b4b1f0a-1be5-4ae7-bba4-228a3a9571fb.png)
-
-- Kategoritë me performancë më të mirë janë:
-
-![Screenshot 2025-03-04 130037.png](attachment:70508767-4a87-490e-99a8-ae6e05b2de96:Screenshot_2025-03-04_130037.png)
-
 ### **Analiza e Kanaleve të Marketingut**
 
 - Kanalet me numrin më të madh të klientëve janë:
@@ -68,13 +46,9 @@ Të dhënat u morën nga një dataset i siguruar nga Kaggle, i cili përmbante i
     3. **Twitter, Twitch Ads**
     4. **Instagram, YouTube Ads**
 
-![Screenshot 2025-03-04 130105.png](attachment:8f5bdbb9-2c8f-4db8-9d68-62ba4f052eba:4122e444-328b-407d-abc5-bbca3c458a53.png)
-
 ### **Analiza e Lokacionit të Klientëve**
 
 - Klientët nga **Azia dhe Europa** përfaqësojnë shumicën e blerësve.
-
-![Screenshot 2025-03-04 130146.png](attachment:eab09dc4-2b41-459a-adcd-b1d8f2ba30b8:Screenshot_2025-03-04_130146.png)
 
 ---
 
